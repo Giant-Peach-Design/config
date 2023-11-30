@@ -2,6 +2,8 @@
 
 namespace Giantpeach\Schnapps\Config;
 
+use Giantpeach\Schnapps\Config\Cli\Cli;
+
 class Config
 {
   private static $instance = null;
