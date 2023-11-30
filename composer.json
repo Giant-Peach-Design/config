@@ -11,5 +11,7 @@
       "name": "Giant Peach"
     }
   ],
-  "require": {}
+  "require": {
+    "oscarotero/env": "^2.1"
+  }
 }

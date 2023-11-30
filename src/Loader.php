@@ -2,6 +2,8 @@
 
 namespace Giantpeach\Schnapps\Config;
 
+use function Env\env;
+
 class Loader
 {
   private string $themePath = '';
@@ -25,7 +27,7 @@ class Loader
    */
   private function loadConfigFiles(): array
   {
-    if (file_exists($this->themePath . '/' . $this->cacheFolder . '/config.php')) {
+    if (env('WP_ENV') !== "development" && file_exists($this->themePath . '/' . $this->cacheFolder . '/config.php')) {
       $config = require $this->themePath . '/' . $this->cacheFolder . '/config.php';
 
       return $config;
@@ -56,6 +58,10 @@ class Loader
    */
   private function cacheConfig(array $config): void
   {
+    if (env('WP_ENV') === "development") {
+      return;
+    }
+
     $cachePath = $this->themePath . '/' . $this->cacheFolder;
 
     if (!file_exists($cachePath)) {
