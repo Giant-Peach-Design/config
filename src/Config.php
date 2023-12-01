@@ -10,6 +10,11 @@ class Config
 
   protected array $config = [];
 
+  public function __construct()
+  {
+    new Cli();
+  }
+
   public static function getInstance(): Config
   {
     if (self::$instance === null) {
